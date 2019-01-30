@@ -1,25 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 
+
+import DrumPad from './components/DrumPad/DrumPad';
+
+import studioBackground from './assets/img/studio.jpg'
+
+import kick1 from './assets/sounds/Kick 7.wav';
+
+const sounds = {
+  kick1,
+}
+
 class App extends Component {
+
+  playSound = (sound, e) => {
+    // sound.play();
+    console.log(sound);
+  }
+
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <div className="background-container">
+          <img  src={studioBackground} alt=""/>
+          <div className="background-overlay" />
+        </div>
+
+        <div className="drumPads-container">
+            <DrumPad keyName="Q" sound={sounds.kick1} playSound={this.playSound}/>
+          </div>
       </div>
     );
   }
